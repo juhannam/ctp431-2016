@@ -1,0 +1,49 @@
+<!doctype html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title> Hello, Sample Play from Server</title>
+</head>
+<body>		
+	<p>Web audio API example: load a sound file and play/stop it on a button click.</p>
+	  <button onclick="loadSound(url)">Load</button>
+	  <button onclick="playSound(myAudioBuffer)">Play</button>
+	  <button onclick="stopSound()">Stop</button>
+	  
+	<script>	
+	var context = new AudioContext;
+	var myAudioBuffer = null;
+
+	var url = "./a_foolish_game.mp3";
+
+	function loadSound(url) {
+	  var request = new XMLHttpRequest();
+	  request.open('GET', url, true);
+	  request.responseType = 'arraybuffer';
+	  request.onload = function() {
+	    alert("sound loaded"); //test
+	    context.decodeAudioData(request.response, function(buffer) {
+	      myAudioBuffer = buffer;
+	      alert("sound decoded"); //test
+	    });
+	  }
+	  request.send();
+	}
+ 
+	var source = null;
+	function playSound(anybuffer) {
+	  source = context.createBufferSource();
+	  source.buffer = anybuffer;
+	  source.connect(context.destination);
+	  source.start();
+	}
+ 
+	function stopSound() {
+	  if (source) {
+	    source.stop();
+	  }
+	}
+	</script>
+</body>
+</html>
