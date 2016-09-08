@@ -11,8 +11,7 @@ Sine!](https://rawgit.com/juhannam/ctp431/master/session1/01.HelloSine.html)
 [Example \#2: Hello,
 Synth!](https://rawgit.com/juhannam/ctp431/master/session1/02.HelloSynth.html)
 
-[Example \#3: Loading an audio file from local
+[Example \#3: Loading and playing an audio file from local
 folders](https://rawgit.com/juhannam/ctp431/master/session1/03.LoadPlayLocalAudioFile.html)
 
-[Example \#4 Loading an audio file on the
-server](https://rawgit.com/juhannam/ctp431/master/session1/04.LoadPlayRemoteAudioFile.html)
+[Example \#4 Loading and playing an audio file on the server](https://rawgit.com/juhannam/ctp431/master/session1/04.LoadPlayRemoteAudioFile.html)
