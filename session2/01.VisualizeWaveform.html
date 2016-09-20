@@ -1,0 +1,124 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title> Audio Visualization</title>
+</head>
+<body>		
+	<h1> Visualize Waveform </h1>
+	<p>Web audio API example: visulizes the waveform of audio files while playing.</p>
+	
+	<input id="fileChooseInput" type="file"></input>
+	<button onclick="playSound(myAudioBuffer)">Play</button>
+	<button onclick="stopSound()">Stop</button>	  
+
+	<p><canvas id='wave_view' style="background: white;"></canvas></p>
+
+	<script>	
+	var context;
+	var myAudioBuffer = null;
+	var analyser;
+	
+	var wave_view;
+	var WIDTH = 1024;
+	var HEIGHT = 256;
+
+	//
+	window.onload=function(){
+		// file open button
+		var control = document.getElementById("fileChooseInput");
+		control.addEventListener("change", fileChanged, false);
+		
+		// canvas 
+		wave_view = document.getElementById("wave_view");
+		wave_view.width =  WIDTH;
+		wave_view.height = HEIGHT;
+		
+		// create audio context
+		context = new AudioContext();
+		
+		// analyzer
+	    analyser = context.createAnalyser();
+	    analyser.fftSize = 2048;
+		analyser.smoothingTimeConstant = 0;
+	}
+	
+	
+	function draw_wave() {		
+		// 2d canvas context
+		var drawContext = wave_view.getContext('2d');
+		
+		// fill rectangular
+		drawContext.fillStyle = 'rgb(200, 200, 200)';
+		drawContext.fillRect(0, 0, WIDTH, HEIGHT);
+
+		// drawing line setting
+		drawContext.lineWidth = 2;
+		drawContext.strokeStyle = 'rgb(0, 0, 0)';
+		drawContext.beginPath();
+				
+		// get samples 
+		var dataArray = new Uint8Array(analyser.frequencyBinCount);
+		analyser.getByteTimeDomainData(dataArray);
+		
+		var sliceWidth = WIDTH * 1.0 / dataArray.length;
+		var x = 0;
+		
+		for (var i = 0; i < dataArray.length; i++) {
+	        var v = dataArray[i] / 128.0;
+	        var y = v * HEIGHT/2;
+
+	    	if(i === 0) {
+	        	drawContext.moveTo(x, y);
+	        } else {
+	        	drawContext.lineTo(x, y);
+	        }
+
+	        x += sliceWidth;
+		}
+		
+		// last touch
+		drawContext.lineTo(wave_view.width, wave_view.height/2);
+		drawContext.stroke();
+		
+		// queue for next callback
+		window.requestAnimationFrame(draw_wave);
+	}
+		
+
+	function fileChanged(e){
+		var file = e.target.files[0];
+		var fileReader = new FileReader();
+		fileReader.onload = fileLoaded;
+		fileReader.readAsArrayBuffer(file);
+	}
+
+	function fileLoaded(e){
+	    context.decodeAudioData(e.target.result, function(buffer) {
+	      myAudioBuffer = buffer;
+	    });
+	}
+
+	var source = null;
+	function playSound(anybuffer) {
+	  source = context.createBufferSource();
+	  source.buffer = anybuffer;
+	  source.connect(context.destination);
+	  
+	  // connect source to analyser
+	  source.connect(analyser);
+	  
+	  source.start();
+	  
+	  // visualize audio
+	  draw_wave();
+	}
+
+	function stopSound() {
+	  if (source) {
+	    source.stop();
+	  }
+	}	   	
+	</script>
+</body>
+</html>
