@@ -34,7 +34,9 @@
 		wave_view.width =  WIDTH;
 		wave_view.height = HEIGHT;
 		
+		
 		// create audio context
+		window.AudioContext = window.AudioContext || window.webkitAudioContext;
 		context = new AudioContext();
 		
 		// analyzer
