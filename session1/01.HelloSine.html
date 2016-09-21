@@ -7,19 +7,19 @@
 
 <body>
 
-<h1> Hello, Sine! </h1>
-  
-  <button onclick="playsound()"> play </button>  
-  <button onclick="stopsound()"> stop </button>  
+	<h1> Hello, Sine! </h1>
+  	<button onclick="playsound()"> play </button>  
+  	<button onclick="stopsound()"> stop </button>  
 
 	<script>
+	window.AudioContext = window.AudioContext || window.webkitAudioContext;
 	var context = new AudioContext();
 
 	// create
 	var oscillator = context.createOscillator();
 
 	// connect
-	oscillator.connect(context.destination);
+	// oscillator.connect(context.destination);
 
 	// control
 	oscillator.type = 'sine'; 

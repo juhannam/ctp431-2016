@@ -19,6 +19,8 @@
 	window.onload=function(){
 		var control = document.getElementById("fileChooseInput");
 		control.addEventListener("change", fileChanged, false);
+
+		window.AudioContext = window.AudioContext || window.webkitAudioContext;
 		context = new AudioContext();
 	}
 
@@ -34,8 +36,11 @@
 	    context.decodeAudioData(e.target.result, function(buffer) {
 	      myAudioBuffer = buffer;
 	    });
+	    console.log("File has been loaded.")
 	}
+
 	var source = null;
+
 	function playSound(anybuffer) {
 	  source = context.createBufferSource();
 	  source.buffer = anybuffer;
