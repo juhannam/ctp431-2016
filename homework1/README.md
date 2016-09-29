@@ -15,14 +15,21 @@ Extend the start-up code by
 - (Optional) Decorating the GUI with text or visual components 
 
 
-### Http-server: simulating web servers on a local computer
+### Tips for coding
 
-Preloading sound samples from the server side (e.g. using XMLHttpRequest()) requires the client-server communication setting. This cannot be run by opening the html file in the local folder. Instead, we can simulate the server on local using a command-line tool called "http-server". For installation, refer to https://www.npmjs.com/package/http-server. Once you successfully install it, you can emulate the http server from your local path by typing "http-server [path]" in command line and "http://127.0.0.1:8080/ in the URL of the web browser.
+##### Http-server: simulating web servers on a local computer
 
-#### Javascript playgrounds 
+Preloading sound samples from the server side (e.g. using XMLHttpRequest()) requires the client-server communication setting. This cannot be run by opening the html file in the local folder. Instead, we can simulate the server on local using a command-line tool called "http-server". For installation, refer to https://www.npmjs.com/package/http-server. Once you successfully install it, you can emulate the http server from your local path by typing this in command line:
+```sh
+$ http-server [path]
+```
+and this in the URL of web browser.
+```sh
+http://127.0.0.1:8080/ 
+```
+##### Javascript playgrounds 
 Another option to run your code in a server is using Javascript playgrounds where you can edit and run the code in the web browser:
 - http://jsbin.com/
 - https://jsfiddle.net/
 - http://codepen.io/
 - http://liveweave.com/
-
