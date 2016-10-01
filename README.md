@@ -1,4 +1,4 @@
 # ctp431
 
-This is the code repository for [CTP431](http://mac.kaist.ac.kr/~juhan/ctp431) at GCST, KAIST.
+Code repository for [CTP431:Music and Audio Computing](http://mac.kaist.ac.kr/~juhan/ctp431) instructed by Juhan Nam
 
