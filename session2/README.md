@@ -10,5 +10,6 @@ You can run the web audio examples from the following links.
 
 [Example \#3: Visualize waveform and spectrum from microphone input](https://rawgit.com/juhannam/ctp431/master/session2/03.VisualizeAudioMicInput.html)
 
+[Example \#4: Visualize loudness, pitch and spectral centroid](https://rawgit.com/juhannam/ctp431/master/session2/04.VisualizeAudioFeatures.html)
 
 
