@@ -1,8 +1,8 @@
 # Homework 2: Music Visualizer
-Your second mission is designing music visualizers that convert music audio to a colorful animation. The start-up code is provided so that you can easily work on it. 
+Your second mission is designing music visualizers that convert music audio to colorful animations. The start-up code is provided so that you can easily work on it. 
 
 ## Step #1 
-In the first example, you are going to visualize 10 subbands levels as a set of neighboring level meters, which is typical in audio EQ systems. In order to implement it, you need to write the followings by filling out the empty part of the start-up code:
+In the first example, you are going to implement a 10-subband level meter, which visualizes the sound levels separately for each frequency band. You need to complete the following parts by filling out the empty part of the start-up code:
 
 - Summarizing FFT spectrum to 10 subbands over frequency
 - Adding an envelope follower to each subband level 
