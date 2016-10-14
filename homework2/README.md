@@ -1,4 +1,9 @@
 # Homework 2: Music Visualizer
+
+
+![Music Visualizer Example 1](./music_visualizer.png)
+
+
 Your second mission is designing music visualizers that convert music audio to colorful animations. The start-up code is provided so that you can easily work on it. To begin with, you should change the filenames from "MusicVisualizer_startup.js" to "MusicVisualizer.js" and "octave_band_startup.js" to "octave_band.js".  
 
 
@@ -9,7 +14,7 @@ In the first example, you are going to implement a 10-subband level meter, which
 - Adding an envelope follower to each subband level 
 
 
-The subband frequencies are provided as a set of lower, center and upper frequencies in the "octave_band.js" file. In order to obtain the sound level of a subband, you should compute a triangular shape of weights with the three frequencies, multiply them to FFT magnitude power under the subband and sum them all togehther. 
+The subband frequencies are provided as a set of lower, center and upper frequencies in the "octave_band.js" file. In order to obtain the sound level of a subband, you should sum the magnitude powers that belong to the subband.  
 
 The envelope follower takes the subband level as input. When the input level is greater than previously tracked level, it returns the input level right away. However, when the input level is less than the previously tracked level, it returns a decayed value from the tracked level by a factor of 0.95 or so. 
 
