@@ -1,7 +1,8 @@
 # Homework 2: Music Visualizer
 
 
-![Music Visualizer Example 1](./music_visualizer.png)
+![Music Visualizer Example 1](./music_visualizer1.png)
+![Music Visualizer Example 2](./music_visualizer2.png)
 
 
 Your second mission is designing music visualizers that convert music audio to colorful animations. The start-up code is provided so that you can easily work on it. To begin with, you should change the filenames from "MusicVisualizer_startup.js" to "MusicVisualizer.js" and "octave_band_startup.js" to "octave_band.js".  
