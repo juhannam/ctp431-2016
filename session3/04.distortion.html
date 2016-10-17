@@ -1,0 +1,104 @@
+<html>
+
+<head>
+	<title> Distortion </title>
+</head>
+
+
+<body>
+
+<h1> Distortion </h1>
+  
+	<input id="fileChooseInput" type="file"></input>
+	<button onclick="playSound(myAudioBuffer)">Play</button>
+	<button onclick="stopSound()">Stop</button>	  
+	
+	<p> Distortion Gain: <input name="foo" id="DistGainSlider" title="Dist Gain" type="range" min="1" max="50" step="0.1" value="1" /> 
+		<span id="DistGainSlider_value"></span>
+	</p>
+	
+	<script>
+	
+	// default
+	var dist_params = {
+		gain : 0.5
+	}
+	
+	window.onload=function(){
+		// select a file 
+		var control = document.getElementById("fileChooseInput");
+		control.addEventListener("change", fileChanged, false);		
+		
+		
+		// link delay GUI parameters to delay and gain nodes
+		var distGainSlider = document.getElementById("DistGainSlider");
+		dist_params.gain = distGainSlider.value;
+		distGainSlider.addEventListener("change", changeDistGain, false);
+		document.getElementById("DistGainSlider_value").innerHTML = distGainSlider.value;		
+	}
+
+	// event handlers
+	function fileChanged(e){
+		var file = e.target.files[0];
+		var fileReader = new FileReader();
+		fileReader.onload = fileLoaded;
+		fileReader.readAsArrayBuffer(file);
+	}
+
+	function fileLoaded(e){
+	    context.decodeAudioData(e.target.result, function(buffer) {
+	    	myAudioBuffer = buffer;
+	    });
+	}
+	
+	function changeDistGain(e){
+		var dist_gain = e.target.value;		
+		dist_params.gain = dist_gain;
+		document.getElementById("DistGainSlider_value").innerHTML = dist_gain;		
+	}
+
+	// y = x / (1 + |x|)
+	function makeDistortionCurve() {
+		var n_samples = 44100;
+		var curve = new Float32Array(n_samples);
+		var x;
+
+		for ( var i=0 ; i < n_samples; ++i ) {
+			x = i * 2 / n_samples - 1;
+			curve[i] = x / ( 1 + Math.abs(x) );
+	  	}
+	  	return curve;
+	};
+			
+	var context = new AudioContext();
+	var source;
+
+	function playSound(anybuffer) {
+		// create buffersource
+		source = context.createBufferSource();
+		source.buffer = anybuffer;
+		
+		// distortion 
+		var dist_gain = context.createGain();
+		var distortion = context.createWaveShaper();
+		dist_gain.gain.value = dist_params.gain
+		
+		distortion.curve = makeDistortionCurve();
+		distortion.oversample = '4x';
+		
+		// plug-in delay
+		source.connect(dist_gain);
+		dist_gain.connect(distortion);
+		distortion.connect(context.destination);
+
+		source.start();
+	}
+
+	function stopSound() {
+		source.stop();
+	}
+	
+	</script>
+</body>
+
+</html>
