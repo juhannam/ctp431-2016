@@ -32,8 +32,8 @@ var biquad;
 
 // Amp response plot
 var canvas = null;
-var WIDTH = 640;
-var HEIGHT = 320;
+var WIDTH = 800;
+var HEIGHT = 400;
 
 var numFreqs = 200;
 var magResponse = new Float32Array(numFreqs); // magnitude
@@ -62,14 +62,26 @@ window.onload=function(){
 	biquad_params.frequency = freqSlider.value;
 	freqSlider.addEventListener("change", changeFilterFreq, false);
 
+	var freqSliderValue = document.getElementById("frequencySliderValue");
+	freqSliderValue.innerHTML = freqSlider.value + ' Hz';
+
+
 	var qSlider = document.getElementById("qSlider");
 	biquad_params.Q = qSlider.value;
 	qSlider.addEventListener("change", changeFilterQ, false);
+
+	var qSliderValue = document.getElementById("qSliderValue");
+	qSliderValue.innerHTML = qSlider.value;
+
 
 	var gainSlider = document.getElementById("gainSlider");
 	biquad_params.gain = gainSlider.value;
 	gainSlider.addEventListener("change", changeFilterGain, false);
 	
+	var gainSliderValue = document.getElementById("gainSliderValue");
+	gainSliderValue.innerHTML = gainSlider.value;
+
+
 	// get convas to plot amp response
 	canvas = document.getElementById("amp_response");				
 	canvas.width =  WIDTH;
@@ -106,18 +118,30 @@ function changeFilterType(e){
 function changeFilterFreq(e){
 	var filterFreq = e.target.value;		
 	biquad_params.frequency = filterFreq;		
+
+	var freqSliderValue = document.getElementById("frequencySliderValue");
+	freqSliderValue.innerHTML = filterFreq + ' Hz';
+
 	updateFilter(); 		
 }
 
 function changeFilterQ(e){
 	var filterQ = e.target.value;		
 	biquad_params.Q = filterQ;		
+
+	var qSliderValue = document.getElementById("qSliderValue");
+	qSliderValue.innerHTML = filterQ;
+
 	updateFilter(); 		
 }
 
 function changeFilterGain(e){
 	var filterGain = e.target.value;		
 	biquad_params.gain = filterGain;		
+
+	var gainSliderValue = document.getElementById("gainSliderValue");
+	gainSliderValue.innerHTML = filterGain;
+
 	updateFilter(); 		
 }
 
@@ -149,7 +173,7 @@ function drawFrequencyResponse() {
     drawContext.strokeStyle = "black";
     drawContext.beginPath();
     for(var frequencyStep = 0; frequencyStep < numFreqs; ++frequencyStep) {
-		drawContext.lineTo(frequencyStep * barWidth, HEIGHT - magResponse[frequencyStep]*HEIGHT/2);
+		drawContext.lineTo(frequencyStep * barWidth, HEIGHT - magResponse[frequencyStep]*HEIGHT/4);
     }
     drawContext.stroke();
 } 
@@ -157,7 +181,7 @@ function drawFrequencyResponse() {
 
 function playSound() {
     if (filePlayOn) {
-    	stopAudio();
+    	stopSound();
     	return;
     }
 
@@ -167,8 +191,10 @@ function playSound() {
 
 	sourceNode.connect(biquad);
 	biquad.connect(context.destination);
-	sourceNode.start(0);
+
     sourceNode.loop = loopPlayBack;
+	sourceNode.onended = stopSound;
+	sourceNode.start(0);
 
 	filePlayOn = true;
 	
@@ -176,11 +202,15 @@ function playSound() {
 	demoAudio.innerHTML = 'Stop'
 }
 
-function stopAudio() {
+function stopSound() {
 	var demoAudio = document.getElementById("playButton");
 	demoAudio.innerHTML = 'Play'
-	sourceNode.stop(0);
-    sourceNode = null;
+
+	if (sourceNode != null ) {
+		sourceNode.stop(0);
+		sourceNode = null;
+	}
+
     filePlayOn = false;
 }
 

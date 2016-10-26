@@ -1,0 +1,41 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title> Chorus Effect </title>
+		<script src="chorus.js"></script>
+</head>
+<body>		
+	<h1> Chorus/Flanger Effect </h1>
+	
+	<button id="demoAudio"> Demo Audio Play </button>  	
+  	<br>
+  	<br>
+
+  	<input id="chorus" type="radio" name="effect" value="Chorus" checked="checked"> Chorus
+  	<input id="flanger" type="radio" name="effect" value="Flanger"> Flanger
+
+	<table>
+	<tr>
+		<td> Delay Time </td>
+		<td> <input id="delayTimeSlider" title="delay time" type="range" min="0" max="0.1" step="0.001" value="0.03" /></td>
+		<td> <p id="delayTimeValue"> </p></td>
+	</tr>
+	<tr>
+		<td> LFO rate </td>
+		<td> <input id="lfoRateSlider" title="LFO rate" type="range" min="0" max="5" step="0.01" value="1.5" /></td>
+		<td> <p id="lfoRateValue"> </p></td>
+	</tr>
+	<tr>
+		<td> LFO depth </td>
+		<td> <input id="lfoDepthSlider" title="LFO depth" type="range" min="0" max="0.005" step="0.00001" value="0.001" /></td>
+		<td> <p id="lfoDepthValue"> </p></td>
+	</tr>
+	<tr>
+		<td> Wet/Dry </td>
+		<td> <input id="wetDrySlider" title="Wed/Dry" type="range" min="0" max="100" step="1" value="50" /></td>
+		<td> <p id="wetDryValue"> </p></td>
+	</tr>
+	</table>
+</body>
+</html>
