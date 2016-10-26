@@ -11,5 +11,5 @@ You can run the web audio examples from the following links.
 
 [Example \#4: Distortion](https://rawgit.com/juhannam/ctp431/master/session3/04.distortion.html)
 
-[Example \#5: Convolvers (HRTF and Reverberation)](https://rawgit.com/juhannam/ctp431/master/session3/05.convolvers.html)
+[Example \#5: Convolution Reverb](https://rawgit.com/juhannam/ctp431/master/session3/05.conv_reverb.html)
 
