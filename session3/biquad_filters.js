@@ -1,6 +1,6 @@
 
 // Buffer source
-var demo_buffer = null;
+var demoBuffer = null;
 var loopPlayBack = false;
 var sourceNode = null;
 var filePlayOn = false;
@@ -35,7 +35,7 @@ var canvas = null;
 var WIDTH = 800;
 var HEIGHT = 400;
 
-var numFreqs = 200;
+var numFreqs = 1200;
 var magResponse = new Float32Array(numFreqs); // magnitude
 var phaseResponse = new Float32Array(numFreqs);  // phase
 var freqBins = new Float32Array(numFreqs);
@@ -79,7 +79,7 @@ window.onload=function(){
 	gainSlider.addEventListener("change", changeFilterGain, false);
 	
 	var gainSliderValue = document.getElementById("gainSliderValue");
-	gainSliderValue.innerHTML = gainSlider.value;
+	gainSliderValue.innerHTML = gainSlider.value + ' dB';
 
 
 	// get convas to plot amp response
@@ -92,7 +92,7 @@ window.onload=function(){
     demoReq.open("Get","NiGiD_-_Gentle_Joy.mp3",true);
     demoReq.responseType = "arraybuffer";
     demoReq.onload = function(){
-        context.decodeAudioData(demoReq.response, function(buffer){demo_buffer = buffer;});
+        context.decodeAudioData(demoReq.response, function(buffer){demoBuffer = buffer;});
     }
     demoReq.send();
 
@@ -140,7 +140,7 @@ function changeFilterGain(e){
 	biquad_params.gain = filterGain;		
 
 	var gainSliderValue = document.getElementById("gainSliderValue");
-	gainSliderValue.innerHTML = filterGain;
+	gainSliderValue.innerHTML = filterGain + ' dB';
 
 	updateFilter(); 		
 }
@@ -172,9 +172,12 @@ function drawFrequencyResponse() {
 
     drawContext.strokeStyle = "black";
     drawContext.beginPath();
+
     for(var frequencyStep = 0; frequencyStep < numFreqs; ++frequencyStep) {
-		drawContext.lineTo(frequencyStep * barWidth, HEIGHT - magResponse[frequencyStep]*HEIGHT/4);
+    	var magResdB = 20*Math.log10(magResponse[frequencyStep]); 
+		drawContext.lineTo(frequencyStep * barWidth, HEIGHT/2 - magResdB/48*HEIGHT );
     }
+
     drawContext.stroke();
 } 
 
@@ -186,8 +189,7 @@ function playSound() {
     }
 
     sourceNode = context.createBufferSource();
-
-    sourceNode.buffer = demo_buffer;
+    sourceNode.buffer = demoBuffer;
 
 	sourceNode.connect(biquad);
 	biquad.connect(context.destination);
