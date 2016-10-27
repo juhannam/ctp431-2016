@@ -21,7 +21,7 @@ The envelope follower takes the subband level as input. When the input level is 
 
 
 ## Step #2
-Write a visualiation function that takes the 10-subband levels and renders an interesting animation. Regarding drawing, you can refer to the following tutorials:  
+Write your own visualiation function that takes the 10-subband levels and renders an interesting animation. Regarding drawing, you can refer to the following tutorials:  
 
 - https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial/Drawing_shapes
 
@@ -38,6 +38,5 @@ Other visualization examples (which are not directly related to homework but mig
 - http://mdn.github.io/violent-theremin/
 - https://airtightinteractive.com/demos/js/reactive/
 
-
-
+Note that you can get an extra credit if your visualization is sufficiently creative and has high quality.  
 
