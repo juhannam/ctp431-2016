@@ -75,7 +75,7 @@ Voice.prototype.triggerAmpEnvelope = function() {
 	var param = this.ampEnv.gain;
 	var now = this.context.currentTime;
 
-	param.cancelScheduledValues(0);
+	param.cancelScheduledValues(now);
 
 	// attack
 	param.setValueAtTime(0, now);
@@ -89,7 +89,7 @@ Voice.prototype.off = function() {
 	var param = this.ampEnv.gain;
 	var now = this.context.currentTime;
 
-	param.cancelScheduledValues(0);
+	param.cancelScheduledValues(now);
 	param.setValueAtTime(param.value, now);
 	param.exponentialRampToValueAtTime(0.001, now + this.ampEnvReleaseTime);
 	this.osc.stop(now + this.ampEnvReleaseTime);
@@ -144,10 +144,11 @@ Synth.prototype.noteOff = function(midi_note_number) {
 
 // select a preset
 window.onload=function(){
-	
+
+	// launch MIDI 	
 	if (navigator.requestMIDIAccess)
         navigator.requestMIDIAccess().then( onMIDIInit, onMIDIReject );
-      else
+    else
         alert("No MIDI support present in your browser.  You're gonna have a bad time.")
 
 
