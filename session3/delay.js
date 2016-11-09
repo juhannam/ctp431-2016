@@ -9,6 +9,7 @@ var delayEffect = null;
 var delayParams = {
 	delayTime : 0.5,
 	feedbackGain : 0.5,
+	wetDry : 50
 }
 
 var filePlayOn = false;
@@ -74,7 +75,9 @@ function changeDelayTime(e){
 
 function changeFeedbackGain(e){
 	var feedbackGain = e.target.value;		
-	delayParams.lfoRate = feedbackGain;		
+	delayParams.feedbackGain = feedbackGain;		
+
+	console.log(feedbackGain);
 
 	var feedbackGainValue = document.getElementById("feedbackGainValue");
 	feedbackGainValue.innerHTML = feedbackGain;
@@ -111,8 +114,8 @@ var Delay = function(context, inputNode, parameters) {
 
 	// connect 
 	this.input.connect(this.delayLine);
-	this.delayLine.connect(this.wetGain);
 	this.delayLine.connect(this.feedbackGain);
+	this.feedbackGain.connect(this.wetGain);
 	this.feedbackGain.connect(this.delayLine);
 
 	this.input.connect(this.dryGain);
