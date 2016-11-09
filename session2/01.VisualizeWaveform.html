@@ -60,7 +60,7 @@
 		drawContext.beginPath();
 				
 		// get samples 
-		var dataArray = new Uint8Array(analyser.frequencyBinCount);
+		var dataArray = new Uint8Array(analyser.frequencyBinCount*2);
 		analyser.getByteTimeDomainData(dataArray);
 		
 		var sliceWidth = WIDTH * 1.0 / dataArray.length;

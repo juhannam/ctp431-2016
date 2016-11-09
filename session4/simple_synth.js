@@ -202,12 +202,12 @@ function onMIDIInit(midi) {
 	}
       
 	if (!haveAtLeastOneDevice)
-		alert("No MIDI input devices present.  You're gonna have a bad time.");
+		console.log("No MIDI input devices present.  You're gonna have a bad time.");
 	}
 
 
 function onMIDIReject(err) {
-	alert("The MIDI system failed to start.  You're gonna have a bad time.");
+	console.log("The MIDI system failed to start.  You're gonna have a bad time.");
 }
 
 
