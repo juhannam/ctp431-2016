@@ -1,7 +1,7 @@
 # Homework 3: Music Synthesizer
 
 
-![Music Synthesizer](./synthersizer.png)
+![Music Synthesizer](./synthesizer.png)
 
 
 You are going to design a music synthesizer that generates musical sounds based on subtractive synthesis. The start-up code is provided so that you can easily work on it. To begin with it, remove the "_startup" suffix from the filenames.
