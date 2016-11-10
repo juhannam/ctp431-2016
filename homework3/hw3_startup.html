@@ -1,0 +1,63 @@
+<html>
+
+<head>
+	<title> Homework #3: Music Synthesizer  </title>
+	<link  href='hw3.css' rel='stylesheet'>
+	<script src="nexusUI.js"></script>
+	<script src="synth_startup.js"></script>
+	<script src="delay.js"></script>
+	<script src="hw3_startup.js"></script>
+</head>
+
+
+<body>
+	<h1> Homework #3: Music Synthesizer </h1>
+
+	<div id="dummy">
+	<p class="panelLabel"> CTP431 Synth </p>
+	</div>
+
+	<div id="osc">
+	<p class="panelLabel"> Oscillator </p>
+	<canvas nx="dial" id="gui_lfo_rate" height="120" width="80" label="LFO rate"> </canvas> 
+	<canvas nx="dial" id="gui_lfo_depth" height="120" width="80" label="LFO depth"> </canvas> 
+	</div>
+
+	<div id="filter">
+	<p class="panelLabel"> Filter </p>
+	<canvas nx="dial" id="gui_filter_freq" height="120" width="80" label="Cut-off"> </canvas> 
+	<canvas nx="dial" id="gui_filter_env_attack" height="120" width="80" label="Attrack"> </canvas> 
+	<canvas nx="dial" id="gui_filter_env_decay" height="120" width="80" label="Decay"> </canvas> 
+	<canvas nx="dial" id="gui_filter_env_sustain" height="120" width="80" label="Sustain"> </canvas> 
+	<canvas nx="dial" id="gui_filter_env_release" height="120" width="80" label="Release"> </canvas> 
+	</div>
+
+	<div id="ampEnv">
+	<p class="panelLabel"> Amp Envelope </p>
+	<canvas nx="dial" id="gui_amp_env_attack" height="120" width="80" label="Attrack"> </canvas> 
+	<canvas nx="dial" id="gui_amp_env_decay" height="120" width="80" label="Decay"> </canvas> 
+	<canvas nx="dial" id="gui_amp_env_sustain" height="120" width="80" label="Sustain"> </canvas> 
+	<canvas nx="dial" id="gui_amp_env_release" height="120" width="80" label="Release"> </canvas> 
+	</div>
+	<br>
+
+	<div id="delay">
+	<p class="panelLabel"> Feedback Delay </p>
+	<canvas nx="dial" id="gui_delay_time" height="120" width="80" label="Time"> </canvas> 
+	<canvas nx="dial" id="gui_delay_gain" height="120" width="80" label="Gain"> </canvas> 
+	<canvas nx="dial" id="gui_delay_wet_dry" height="120" width="80" label="Wet/Dry"> </canvas> 
+	</div>
+
+	<div id="reverb">
+	<p class="panelLabel"> Reverb </p>
+	<canvas nx="dial" id="gui_reverb_time" height="120" width="80" label="Wet/Dry"> </canvas> 
+	</div>
+
+	<br>
+	<div id="keys">
+	<canvas nx="keyboard" id="gui_keyboard"  height="150" width="750"></canvas>
+	</div>
+
+</body>
+
+</html>

@@ -1,0 +1,82 @@
+button {
+    padding: 5px;
+    background: rgb(200, 200, 200);
+    border: 1px solid rgb(122, 122, 122);
+    border-radius: 2px;
+    outline: none;
+    width:120px;
+    height:120px;
+    font-size:15px
+}
+
+button.active, button:active {
+    background: rgb(100, 100, 100);
+    border: 1px solid rgb(0,0,0);
+    box-shadow: 0 0 2px 0 rgb(0,0,0);
+}
+
+p.panelLabel {
+    font-family: "Arial Black", "Arial Bold", Gadget, sans-serif;
+    font-size: 15px;
+    font-style: normal;
+    font-variant: normal;
+    font-weight: 400;
+    line-height: 20px;
+    padding: 5px;
+    margin: 1px 1px 1px 1px;
+}
+
+div#dummy{
+    padding:10px;
+    margin: 5px 5px 5px 5px;
+    background: rgb(120, 120, 120);
+    width:85px;
+    height:150px;
+    float:left;
+}
+#osc{
+    padding:10px;
+    margin: 5px 5px 5px 5px;
+    background: rgb(168, 168, 255);
+    width:165px;
+    height:150px;
+    float:left;
+}
+#filter{
+    padding:10px;
+    margin: 5px 5px 5px 5px;
+    background: rgb(168, 255, 189);
+    width:420px;
+    height:150px;
+    float:left;
+}
+#ampEnv{
+    padding:10px;
+    margin: 5px 5px 5px 5px;
+    background: rgb(213, 132, 240);
+    width:335px;
+    height:150px;
+    clear: left;
+    float:left;
+}
+#delay{
+    padding:10px;
+    margin: 5px 5px 5px 5px;
+    background: rgb(194, 199, 105);
+    width:250px;
+    height:150px;
+    float: left;
+}
+#reverb{
+    padding:10px;
+    margin: 5px 5px 5px 5px;
+    background: rgb(81, 127, 201);
+    width:85px;
+    height:150px;
+    float:left;
+}
+#keys{
+    padding:5px;
+    margin: 5px 0px 5px 0px;
+    clear:left;
+}
