@@ -11,7 +11,7 @@ The start-up code have already a working synth that generates tones with oscilla
 
 
 ## Step #2
-We use two types of audio effect units, feedback delay and reverb, to enrich the synth sound. The delay unit is already implemented. Your job is adding the reverb based on convolution. Regarding the room impulse response, you should pick it up from [http://www.openairlib.net/](http://www.openairlib.net/). After choosing the impulse response file, ensure that the sampling rate is 44100 Hz/sec. Otherwise, resample it using Audition or Audacity. In order to implement them, create a new reverb.js file and write the code on your own refering to delay.js.       
+We use two types of audio effect units, feedback delay and reverb, to enrich the synth sound. The delay unit is already implemented. Your job is adding the reverb based on convolution. Regarding the room impulse response, you should pick it up from [http://www.openairlib.net/](http://www.openairlib.net/). After choosing the impulse response file, ensure that the sampling rate is 44100 Hz/sec. Otherwise, resample it using Audition or Audacity. Referring to delay.js, implement the convolution reverb in reverb.js file. Note that you should rewire the units such that the delay is connected to the reverb, and the reverb is to the DAC. 
 
 
 ## Step #3
