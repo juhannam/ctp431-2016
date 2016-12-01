@@ -1,6 +1,23 @@
 
 window.AudioContext = window.AudioContext || window.webkitAudioContext;
 var context = new AudioContext();
+
+
+if ( context.state === 'suspended') {
+	var resume = function () {
+		context.resume();
+
+		setTimeout(function () {
+			if (context.state === 'running') {
+				document.body.removeEventListener('touchend', resume, false);
+			}
+		}, 0);
+	};
+
+	document.body.addEventListener('touchend', resume, false);
+}
+
+
 var synth;
 
 var settings = {
