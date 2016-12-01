@@ -1,5 +1,6 @@
 
-var context = new AudioContext()
+window.AudioContext = window.AudioContext || window.webkitAudioContext;
+var context = new AudioContext();
 
 settings = {
 	id: 'keyboard',
@@ -180,7 +181,7 @@ var brass_params = {
 var ep_params = {
 	presetName: "Electric Piano",
 	carrierModulationRatio: 1/10,
-	modulationIndex: 2,
+	modulationIndex: 4,
 	IndexAttackTime: 0,
 	IndexDecayTime: 3,
 	IndexSustainLevel: 0.001,

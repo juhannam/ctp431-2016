@@ -97,7 +97,9 @@ window.onload=function(){
     demoReq.send();
 
     // create audio context and node
+    window.AudioContext = window.AudioContext || window.webkitAudioContext;
 	context = new AudioContext();
+
  	biquad= context.createBiquadFilter();
 
  	for(var i = 0; i < numFreqs; ++i) {

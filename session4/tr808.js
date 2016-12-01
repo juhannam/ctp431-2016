@@ -1,3 +1,5 @@
+window.AudioContext = window.AudioContext || window.webkitAudioContext;
+var context = new AudioContext();
 
 window.onload=function(){
     window.addEventListener('keydown', function (key) {
@@ -130,8 +132,6 @@ function keyboardDown(key) {
 		break;		
 	}
 }
-
-var context = new AudioContext();
 
 function play_kick()
 {

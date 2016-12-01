@@ -1,5 +1,6 @@
 
-var context = new AudioContext()
+window.AudioContext = window.AudioContext || window.webkitAudioContext;
+var context = new AudioContext();
 var synth;
 
 var settings = {
@@ -61,9 +62,9 @@ var Voice = function(context, frequency, amplitude, parameters) {
 
 	this.osc.type = 'square';
 	this.filter.type = 'lowpass';
-	this.filter.frequency.value = 5000;
+	this.filter.frequency.value = frequency;
 
-	this.ampEnv.gain.value = 0.5;	
+	this.ampEnv.gain.value = amplitude;	
 };
 
 Voice.prototype.on = function() {
@@ -111,7 +112,7 @@ Synth.prototype.noteOn = function(midi_note_number, midi_note_velocity) {
 
 Synth.prototype.midiNoteNumberToFrequency = function(midi_note_number) {
 	var f_ref = 440;
-	var n_ref = 57;
+	var n_ref = 69;
 	var a = Math.pow(2, 1/12);
 	var n = midi_note_number - n_ref;
 	var f = f_ref * Math.pow(a, n);
@@ -126,13 +127,13 @@ Synth.prototype.midiNoteVelocityToAmp = function(midi_note_velocity) {
 	// velocity to dB
 	var note_dB = midi_note_velocity/128.0*(-min_dB) + min_dB;
 
-	// dB to velocity
-	var velocity = Math.pow(10.0, note_dB/20.0);
+	// dB to amplitude
+	var amplitude = Math.pow(10.0, note_dB/20.0);
 
 	//console.log(midi_note_velocity)
-	//console.log(velocity)
+	//console.log(amplitude)
 
-	return velocity;
+	return amplitude;
 
 };
 
