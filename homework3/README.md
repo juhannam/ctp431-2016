@@ -7,7 +7,7 @@
 You are going to design a music synthesizer that generates musical sounds based on subtractive synthesis. The start-up code is provided so that you can easily work on it. To begin with it, remove the "_startup" suffix from the filenames.
 
 ## Step #1 
-The start-up code have already a working synth that generates tones with oscillator, filter and amplitude envelope. Your mission is going to add two types of controllers, LFO (Low Lrequency Oscillator) and ENV (Envelope) to it. The LFO is connected to the oscillator frequency to control pitch (i.e. vibrato), and the ENV is connected to the filter cutoff-frequency to control timbre. In order to implement them, modify hw3.js and synth.js on your own.       
+A simple synth that generates tones with oscillator, filter and amplitude envelope is already implemented in the start-up code. Your mission is going to add two types of controllers, LFO (Low Frequency Oscillator) and ENV (Envelope) to it. The LFO is connected to the oscillator frequency to control pitch (i.e. vibrato), and the ENV is connected to the filter cutoff-frequency to control timbre. In order to implement them, modify hw3.js and synth.js on your own.       
 
 
 ## Step #2
